@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Create a new employee</h1>
+
+      <form class="form" action="/createemployee" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "First name(s)"
+          },
+          id: "first-name",
+          name: "first-name"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Last name"
+          },
+          id: "last-name",
+          name: "last-name"
+        }) }}
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "Postcode"
+  },
+  classes: "govuk-input--width-10",
+  id: "postcode",
+  name: "postcode",
+  autocomplete: "postal-code"
+}) }}
+
+
+        {{ govukInput({
+          label: {
+            text: "Address"
+          },
+          id: "address",
+          name: "address"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "National Insurance number"
+          },
+          id: "nin",
+          name: "nin"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Bank account number"
+          },
+          id: "bank-account",
+          name: "bank-account",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Starting salary"
+          },
+          id: "starting-salary",
+          name: "starting-salary"
+        }) }}
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      idPrefix: "is-manager",
+      name: "is-manager",
+      items: [
+    {
+      value: "is-manager",
+      text: "This employee is a manager"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+  id: "department",
+  name: "department",
+  label: {
+    text: "Department"
+  },
+  items: [
+    {
+      value: "published",
+      text: "Sales"
+    },
+    {
+      value: "updated",
+      text: "Finance"
+    },
+    {
+      value: "views",
+      text: "HR",
+      selected: true
+    }
+  ]
+}) }}
+
+         <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
