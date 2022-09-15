@@ -23,16 +23,16 @@
           label: {
             text: "First name(s)"
           },
-          id: "first-name",
-          name: "first-name"
+          id: "first_name",
+          name: "first_name"
         }) }}
 
         {{ govukInput({
           label: {
             text: "Last name"
           },
-          id: "last-name",
-          name: "last-name"
+          id: "last_name",
+          name: "last_name"
         }) }}
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -68,8 +68,8 @@
           label: {
             text: "Bank account number"
           },
-          id: "bank-account",
-          name: "bank-account",
+          id: "bank_account",
+          name: "bank_account",
           inputmode: "numeric",
           spellcheck: false
         }) }}
@@ -78,18 +78,18 @@
           label: {
             text: "Starting salary"
           },
-          id: "starting-salary",
-          name: "starting-salary"
+          id: "starting_salary",
+          name: "starting_salary"
         }) }}
 
         {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
     {{ govukCheckboxes({
-      idPrefix: "is-manager",
-      name: "is-manager",
+      idPrefix: "is_manager",
+      name: "is_manager",
       items: [
     {
-      value: "is-manager",
+      value: "is_manager",
       text: "This employee is a manager"
     }
   ]

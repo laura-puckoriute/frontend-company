@@ -17,12 +17,12 @@ Question page template – {{ serviceName }} – GOV.UK Prototype Kit
             </h1>
         {% if employees and employees.length > 0 %}
         {% set employeerows = [] %}
-        {% for employee in employees | contains(namefilter) | sort(attribute='department') %}
-        {% set employeerows = (employeerows.push([{ text: employee.employee_id }, {text: employee.fname}, {text: employee.lname},{text: employee.postcode},{text: employee.address},{text: employee.nin},{text: employee.bank_account},
-        {text: employee.starting_salary}, {text: employee.isManager},{text: employee.department}]), cityrows) %}
+        {% for employee in employees | contains(departmentfilter) | sort(attribute='department') %}
+            {% set employeerows = (employeerows.push([{ text: employee.fname }, {text: employee.lname}, {text: employee.postcode},{text: employee.address},{text: employee.nin},{text: employee.bankAccount},{text: employee.startingSalary},
+            {text: employee.isManager}, {text: employee.department}]), employeerows) %}
         {% endfor %}
         {% else %}
-        There are no cities.
+        There are no Employees.
         {% endif %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
 {{ govukTable({
@@ -30,7 +30,6 @@ caption: "Employee Information",
 captionClasses: "govuk-table__caption--m",
 firstCellIsHeader: true,
 head: [
-{ text: "Employee_ID" },
 { text: "First Name" },
         { text: "Last Name" },
         { text: "Postcode" },
@@ -41,7 +40,7 @@ head: [
         { text: "Manager" },
         { text: "Department" }
 ],
-        rows: cityrows })
+        rows: employeerows })
         }}
     </div>
 </div>

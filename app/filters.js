@@ -37,7 +37,12 @@ module.exports = function (env) {
     documentation.
 
   ------------------------------------------------------------------ */
-
+     filters.contains = function(employees, substr){
+          if(typeof substr == "undefined") {
+            substr = ''
+          }
+          return employees.filter(c => c.department.toLowerCase().indexOf(substr) > -1)
+        }
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
