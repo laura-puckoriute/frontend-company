@@ -12,7 +12,8 @@ router.post('/createemployee', async (req, res) => {
   
     // todo: validate here 
       await companydata.createEmployee(employee)
-      res.render('getEmployee', { cities: await companydata.getEmployees()});
+      response = await companydata.getEmployees()
+      res.render('getEmployee', {employees:response});
   })
 
 router.get('/getemployee', async (req, res) => {

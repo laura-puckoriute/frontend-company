@@ -82,18 +82,15 @@
           name: "starting_salary"
         }) }}
 
-        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+        {{ govukInput({
+          label: {
+            text: "Is this employee a manager? type 'yes'"
+          },
+          id: "is_manager",
+          name: "is_manager"
+        }) }}
 
-    {{ govukCheckboxes({
-      idPrefix: "is_manager",
-      name: "is_manager",
-      items: [
-    {
-      value: "is_manager",
-      text: "This employee is a manager"
-    }
-  ]
-}) }}
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
 {% from "govuk/components/select/macro.njk" import govukSelect %}
 
